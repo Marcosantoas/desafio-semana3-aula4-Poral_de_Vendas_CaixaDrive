@@ -1,0 +1,26 @@
+<div class="perfil-container">
+
+  <h2>Minhas Reservas</h2>
+
+  <p *ngIf="reservaService.totalReservas() === 0">
+    Nenhum veículo reservado.
+  </p>
+
+  <div class="card" *ngFor="let veiculo of reservaService.reservas()">
+
+    <h3>{{ veiculo.modelo }}</h3>
+
+    <p>{{ veiculo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+
+    <button (click)="remover(veiculo.id)">
+      Remover
+    </button>
+
+  </div>
+
+  <button *ngIf="reservaService.totalReservas() > 0"
+          (click)="limpar()">
+    Limpar Reservas
+  </button>
+
+</div>

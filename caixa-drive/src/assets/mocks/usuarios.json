@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "Marcos",
+    "perfil": "VIP",
+    "email": "vip@caixadrive.com",
+    "senha": "1234"
+  },
+  {
+    "id": 2,
+    "nome": "Cliente Standard",
+    "perfil": "Standard",
+    "email": "cliente@caixadrive.com",
+    "senha": "1234"
+  },
+  {
+    "id": 3,
+    "nome": "Administrador",
+    "perfil": "Admin",
+    "email": "admin@caixadrive.com",
+    "senha": "admin"
+  }
+]

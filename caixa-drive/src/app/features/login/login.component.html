@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h2>Portal CaixaDrive</h2>
+
+  <input
+    type="email"
+    placeholder="Email"
+    [ngModel]="email()"
+    (ngModelChange)="email.set($event)"
+  />
+
+  <input
+    type="password"
+    placeholder="Senha"
+    [ngModel]="senha()"
+    (ngModelChange)="senha.set($event)"
+  />
+
+  <button (click)="entrar()">Entrar</button>
+
+  <p *ngIf="erro()" style="color: red;">
+    {{ erro() }}
+  </p>
+</div>

@@ -15,25 +15,25 @@ export const routes: Routes = [
         .then(m => m.LoginComponent)
   },
   {
-    path: 'portal',
-    canActivate: [authGuard],
-    resolve: { estoque: consorcioResolver },
-    loadComponent: () =>
-      import('./features/portal/portal.component')
-        .then(m => m.PortalComponent),
-    children: [
-      {
-        path: 'catalogo',
-        loadComponent: () =>
-          import('./features/catalogo/catalogo.component')
-            .then(m => m.CatalogoComponent)
-      },
-      {
-        path: 'perfil',
-        loadComponent: () =>
-          import('./features/perfil/perfil.component')
-            .then(m => m.PerfilComponent)
-      }
-    ]
-  }
+  path: 'portal',
+  canActivate: [authGuard],
+  loadComponent: () =>
+    import('./features/portal/portal.component')
+      .then(m => m.PortalComponent),
+  children: [
+    {
+      path: 'catalogo',
+      resolve: { estoque: consorcioResolver },
+      loadComponent: () =>
+        import('./features/catalogo/catalogo.component')
+          .then(m => m.CatalogoComponent)
+    },
+    {
+      path: 'perfil',
+      loadComponent: () =>
+        import('./features/perfil/perfil.component')
+          .then(m => m.PerfilComponent)
+    }
+  ]
+}
 ];

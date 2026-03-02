@@ -1,1 +1,34 @@
-<p>portal works!</p>
+<header class="header">
+
+  <div class="logo">
+    🚗 CaixaDrive
+  </div>
+
+  <nav class="menu">
+    <a routerLink="catalogo" routerLinkActive="active">
+      Catálogo
+    </a>
+
+    <a routerLink="perfil" routerLinkActive="active">
+      Meu Perfil
+      <span class="badge"
+            *ngIf="reservaService.totalReservas() > 0">
+        {{ reservaService.totalReservas() }}
+      </span>
+    </a>
+  </nav>
+
+  <div class="usuario">
+    <span>
+      {{ authService.usuario()?.nome }}
+      ({{ authService.usuario()?.perfil }})
+    </span>
+
+    <button (click)="logout()">Sair</button>
+  </div>
+
+</header>
+
+<main class="conteudo">
+  <router-outlet></router-outlet>
+</main>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservaService } from '../../core/services/reserva.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-perfil',
@@ -10,7 +11,8 @@ import { ReservaService } from '../../core/services/reserva.service';
 })
 export class PerfilComponent {
 
-  constructor(public reservaService: ReservaService) {}
+  authService = inject(AuthService);
+  reservaService = inject(ReservaService);
 
   remover(id: number) {
     this.reservaService.remover(id);

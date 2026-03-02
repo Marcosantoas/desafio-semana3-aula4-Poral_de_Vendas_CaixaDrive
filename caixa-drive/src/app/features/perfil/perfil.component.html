@@ -1,26 +1,39 @@
-<div class="perfil-container">
+<h2 class="titulo">Meu Perfil</h2>
 
-  <h2>Minhas Reservas</h2>
+<div class="card-perfil">
+  <p><strong>Nome:</strong> {{ authService.usuario()?.nome }}</p>
+  <p><strong>Email:</strong> {{ authService.usuario()?.email }}</p>
+  <p><strong>Perfil:</strong> {{ authService.usuario()?.perfil }}</p>
+</div>
 
-  <p *ngIf="reservaService.totalReservas() === 0">
-    Nenhum veículo reservado.
-  </p>
+<h3 class="subtitulo">Veículos Reservados</h3>
 
-  <div class="card" *ngFor="let veiculo of reservaService.reservas()">
+<div *ngIf="reservaService.totalReservas() === 0" class="vazio">
+  Nenhum veículo reservado.
+</div>
 
-    <h3>{{ veiculo.modelo }}</h3>
+<div class="lista">
 
-    <p>{{ veiculo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+  <div class="card-reserva"
+       *ngFor="let veiculo of reservaService.reservas()">
 
-    <button (click)="remover(veiculo.id)">
+    <h4>{{ veiculo.modelo }}</h4>
+    <p class="preco">
+      {{ veiculo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+    </p>
+
+    <button class="remover"
+            (click)="reservaService.remover(veiculo.id)">
       Remover
     </button>
 
   </div>
 
-  <button *ngIf="reservaService.totalReservas() > 0"
-          (click)="limpar()">
-    Limpar Reservas
-  </button>
+</div>
 
+<div *ngIf="reservaService.totalReservas() > 0" class="acoes">
+  <button class="limpar"
+          (click)="reservaService.limpar()">
+    Limpar Todas as Reservas
+  </button>
 </div>

@@ -1,19 +1,33 @@
-<div class="catalogo-container">
-  <div class="card" *ngFor="let veiculo of veiculos()">
+<h2 class="titulo">Catálogo de Veículos</h2>
 
-    <img [src]="veiculo.imagem" [alt]="veiculo.modelo" />
+<div class="lista">
 
-    <h3>{{ veiculo.modelo }}</h3>
+  <div class="card" *ngFor="let veiculo of veiculos">
 
-    <p>{{ veiculo.descricao }}</p>
+    <img
+      [src]="veiculo.imagem"
+      [alt]="veiculo.modelo"
+      class="imagem"
+    />
 
-    <p class="preco">
-      {{ veiculo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
-    </p>
+    <div class="conteudo">
 
-    <button (click)="reservar(veiculo)">
-      Reservar Veículo
-    </button>
+      <h3>{{ veiculo.modelo }}</h3>
+
+      <p class="descricao">
+        {{ veiculo.descricao }}
+      </p>
+
+      <p class="preco">
+        {{ veiculo.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+      </p>
+
+      <button (click)="reservar(veiculo)">
+        Reservar Veículo
+      </button>
+
+    </div>
 
   </div>
+
 </div>

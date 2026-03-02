@@ -1,23 +1,47 @@
-<div class="login-container">
-  <h2>Portal CaixaDrive</h2>
+<div class="login-wrapper">
 
-  <input
-    type="email"
-    placeholder="Email"
-    [ngModel]="email()"
-    (ngModelChange)="email.set($event)"
-  />
+  <div class="login-card">
 
-  <input
-    type="password"
-    placeholder="Senha"
-    [ngModel]="senha()"
-    (ngModelChange)="senha.set($event)"
-  />
+    <div class="logo">
+      🚗
+      <h2>CaixaDrive</h2>
+      <span>Portal de Vendas</span>
+    </div>
 
-  <button (click)="entrar()">Entrar</button>
+    <form (ngSubmit)="entrar()" #form="ngForm">
 
-  <p *ngIf="erro()" style="color: red;">
-    {{ erro() }}
-  </p>
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          required
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          name="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <input
+          type="password"
+          required
+          [ngModel]="senha()"
+          (ngModelChange)="senha.set($event)"
+          name="senha"
+        />
+      </div>
+
+      <button type="submit">
+        Entrar
+      </button>
+
+    </form>
+
+    <div *ngIf="erro()" class="erro">
+      {{ erro() }}
+    </div>
+
+  </div>
+
 </div>
